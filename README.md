@@ -21,7 +21,7 @@ meteor
 
 Once the app is running go to your browser at [localhost:3000](localhost:3000)
 
-If you do not have meteor installed, go to [meteor.com/install](meteor.com/install).
+If you do not have meteor installed, go to [https://meteor.com/install](meteor.com/install).
 
 All of the UI components have stories for React Storybook, a tool for browsing UI components with mock state data. To run the Storybook:
 
