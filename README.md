@@ -19,7 +19,7 @@ Then, to run the app locally:
 meteor
 ```
 
-Once the app is running go to your browser at [localhost:3000](localhost:3000)
+Once the app is running go to your browser at [http://localhost:3000](localhost:3000)
 
 If you do not have meteor installed, go to [meteor.com/install](https://meteor.com/install).
 
