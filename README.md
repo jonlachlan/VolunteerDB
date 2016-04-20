@@ -2,18 +2,47 @@
 
 Tools for collecting and search volunteer information so that campaign coordinators can assemble teams.
 
-## Getting Started
+## Installation:
 
 (If you are going to be contributing code, please see the instructions for Contributing below).
 
-To prepare the environment, clone the repo on your local machine and then in the terminal:
+To prepare the environment, clone the repo on your local machine:
+```
+git clone https://github.com/GrassrootsSelect/VolunteerDB
+```
 
+Then, navigate to the VolunteerDB folder:
 ```
 cd /path/to/VolunteerDB
-npm install
+```
+Now, lets install NodeJS. For Windows/OS X users, go [here](https://nodejs.org/en/download/).
+
+For Linux Users, a page for installation via package manager is located [here](https://nodejs.org/en/download/package-manager/). You can also grab the source code and compile [here](https://nodejs.org/en/download/).
+
+## For Windows Users
+
+Check to make sure that your version is above 3.0.0 by running:
+```
+npm -v
+```
+If it is not, then run:
+```
+npm install --global --production npm-windows-upgrade
+```
+Then run the upgrade:
+```
+npm-windows-upgrade
+```
+After you have done all of the steps above check the version again. If it is still sub 3.0, then navigate to the folder where npm installed the update:
+```
+cd %appdata%\npm\node-modules\npm-windows-upgrade
+``` 
+And finally, run the update:
+```
+npm-windows-upgrade
 ```
 
-Then, to run the app locally:
+Now, run the app locally:
 
 ```
 meteor
