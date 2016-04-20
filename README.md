@@ -17,7 +17,7 @@ cd /path/to/VolunteerDB
 ```
 Now, lets install NodeJS. For Windows/OS X users, go [here](https://nodejs.org/en/download/).
 
-For Linux Users, a page for installation via package manager is located [here](https://nodejs.org/en/download/package-manager/). You can also grab the source code and compile [here](https://nodejs.org/en/download/).
+For Linux users, a page for installation via package manager is located [here](https://nodejs.org/en/download/package-manager/). You can also grab the source code and compile [here](https://nodejs.org/en/download/).
 
 ## For Windows Users
 
@@ -36,7 +36,7 @@ npm-windows-upgrade
 After you have done all of the steps above check the version again. If it is still sub 3.0, then navigate to the folder where npm installed the update:
 ```
 cd %appdata%\npm\node-modules\npm-windows-upgrade
-``` 
+```
 And finally, run the update:
 ```
 npm-windows-upgrade
