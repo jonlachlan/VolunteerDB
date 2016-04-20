@@ -37,10 +37,16 @@ After you have done all of the steps above check the version again. If it is sti
 ```
 cd %appdata%\npm\node-modules\npm-windows-upgrade
 ```
-And finally, run the update:
+Run the update:
 ```
 npm-windows-upgrade
 ```
+We're almost done! Just one more command. if you haven't already, navigate to the VolunteerDB folder, and run:
+```
+npm install
+```
+
+## Running the App
 
 Now, run the app locally:
 
