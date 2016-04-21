@@ -2,26 +2,61 @@
 
 Tools for collecting and search volunteer information so that campaign coordinators can assemble teams.
 
-## Getting Started
+## Installation:
 
 (If you are going to be contributing code, please see the instructions for Contributing below).
 
-To prepare the environment, clone the repo on your local machine and then in the terminal:
+To prepare the environment, clone the repo on your local machine:
+```
+git clone https://github.com/GrassrootsSelect/VolunteerDB
+```
 
+Then, navigate to the VolunteerDB folder:
 ```
 cd /path/to/VolunteerDB
+```
+Now, lets install NodeJS. For Windows/OS X users, go [here](https://nodejs.org/en/download/).
+
+For Linux users, a page for installation via package manager is located [here](https://nodejs.org/en/download/package-manager/). You can also grab the source code and compile [here](https://nodejs.org/en/download/).
+
+## For Windows Users
+
+Check to make sure that your version is above 3.0.0 by running:
+```
+npm -v
+```
+If it is not, then run:
+```
+npm install --global --production npm-windows-upgrade
+```
+Then run the upgrade:
+```
+npm-windows-upgrade
+```
+After you have done all of the steps above check the version again. If it is still sub 3.0, then navigate to the folder where npm installed the update:
+```
+cd %appdata%\npm\node-modules\npm-windows-upgrade
+```
+Run the update:
+```
+npm-windows-upgrade
+```
+We're almost done! Just one more command. if you haven't already, navigate to the VolunteerDB folder, and run:
+```
 npm install
 ```
 
-Then, to run the app locally:
+## Running the App
+
+Now, run the app locally:
 
 ```
 meteor
 ```
 
-Once the app is running go to your browser at [localhost:3000](localhost:3000)
+Once the app is running go to your browser at [http://localhost:3000](localhost:3000)
 
-If you do not have meteor installed, go to [meteor.com/install](meteor.com/install).
+If you do not have meteor installed, go to [meteor.com/install](https://meteor.com/install).
 
 All of the UI components have stories for React Storybook, a tool for browsing UI components with mock state data. To run the Storybook:
 
