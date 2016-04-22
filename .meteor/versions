@@ -64,8 +64,6 @@ reactive-var@1.0.8
 reload@1.1.7
 retry@1.0.6
 routepolicy@1.0.9
-semantic:ui@2.1.8
-semantic:ui-data@2.1.8
 service-configuration@1.0.8
 session@1.1.4
 sha@1.0.6
@@ -77,6 +75,7 @@ standard-minifier-js@1.0.5
 templating@1.1.8
 templating-tools@1.0.3
 tracker@1.0.12
+twbs:bootstrap@3.3.6
 ui@1.0.10
 underscore@1.0.7
 url@1.0.8
