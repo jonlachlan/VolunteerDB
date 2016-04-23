@@ -28,3 +28,5 @@ alanning:elasticsearch
 matb33:collection-hooks
 twbs:bootstrap
 easysearch:elasticsearch
+semantic:ui
+flemay:less-autoprefixer
