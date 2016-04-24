@@ -28,5 +28,8 @@ alanning:elasticsearch
 matb33:collection-hooks
 twbs:bootstrap
 easysearch:elasticsearch
+alanning:roles
 semantic:ui
 flemay:less-autoprefixer
+gwendall:blaze-to-react
+std:accounts-semantic
