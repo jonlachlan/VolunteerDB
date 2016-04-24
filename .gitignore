@@ -2,3 +2,7 @@ node_modules
 *.log
 .deploy/
 .idea
+client/modules/theme/semantic-ui/definitions/
+client/modules/theme/semantic-ui/themes
+client/modules/theme/semantic-ui/semantic.less
+client/modules/theme/semantic-ui/theme.import.less
