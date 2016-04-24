@@ -1,13 +1,33 @@
 import React from 'react'
 
-let style = {
-  padding: '30px'
+import TopbarNav from './topbar_nav';
+
+
+export default class extends React.Component {
+
+  render() {
+    let topbarRowStyle = {
+      "margin-bottom": "30px"
+    }
+    const {content} = this.props;
+
+    return (
+      <div className="ui grid">
+        <div className="row" style={topbarRowStyle}>
+          <div className="column">
+            <TopbarNav />
+          </div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <div id="main_layout" className="ui container">
+
+              {content()}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-const MainLayout = ({content}) => (
-  <div id="main_layout" style={style} >
-    {content()}
-  </div>
-);
-
-export default MainLayout;
-
