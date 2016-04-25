@@ -7,8 +7,8 @@ export default class extends React.Component {
 
   render() {
     let topbarRowStyle = {
-      "margin-bottom": "30px"
-    }
+      marginBottom: "30px"
+    };
     const {content} = this.props;
 
     return (
