@@ -4,7 +4,7 @@ Tools for collecting and search volunteer information so that campaign coordinat
 
 ## Technology Stack
 
-This is a Mantra application, which is an application architecture for the [Meteor](meteor.com) platform using [React](reactjs.com) for the UI layer. It uses a modular design, with a focus on maintainability and separation between UI and state management. Please see the Mantra specification at [https://kadirahq.github.io/mantra/](https://kadirahq.github.io/mantra/).
+This app is built on the [Meteor](meteor.com) platform using [React](reactjs.com) for the UI layer, and [Semantic UI](semantic-ui.com) for styling.
 
 ## Prerequisites
 
@@ -40,6 +40,25 @@ meteor
 ```
 
 Once the app is running go to your browser at [http://localhost:3000](localhost:3000)
+
+## Logging in for the first time
+
+If you don't yet have any users and need to log in for testing purposes, you can create an account using the terminal. Create a new terminal window (separate from the one running Meteor), and type
+
+```
+meteor shell
+```
+
+This will bring you to the shell interface, and it gives you privileged backend access. You can then create an account and give it permissions like this:
+
+```
+> Accounts.createUser({email: "demo@grassrootsselect.org", password: "my_secure_password_09ux0e9fjw03f"})
+```
+
+It will echo back the ID for the new user. Copy that ID and add a role (let's assume the ID is "abcde"):
+```
+> Roles.addUsersToRoles("abcde",'admin','grassrootsselect.org')
+```
 
 ## Running Storybook
 
