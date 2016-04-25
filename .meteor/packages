@@ -33,3 +33,4 @@ semantic:ui
 flemay:less-autoprefixer
 gwendall:blaze-to-react
 std:accounts-semantic
+react-meteor-data
