@@ -1,24 +1,28 @@
 import React from 'react'
+import ProfileForm from './registration_form'
 
 export default VolunteerSearch = ({
-  searchString,
   searchResults,
   resultsCount,
-  getResults
+  getResults,
+  isLoading,
+  isError
 }) => (
   <div>
-    <h1>"Volunteer Search"</h1>
+    <h1>Volunteer Search</h1>
     <p><em>For example, try "writing letters to the editor" or "web developer"</em></p>
     <form onSubmit={(e)=> {
       e.preventDefault();
     }}>
-      <input type="text" placeholder="Enter text" onChange={(e)=> {
-        e.preventDefault();
-        getResults(e.target.value);
-      }}/>
+      <div className={isLoading ? "ui fluid loading icon input" : "ui fluid icon input"} >
+        <input type="text" placeholder="Search..." onChange={(e)=> {
+          e.preventDefault();
+          getResults(e.target.value)
+        }} />
+          <i className={isError ? "warning sign icon" : "search icon"}></i>
+      </div>
     </form>
     <h4>{resultsCount} results found.</h4>
-    <p><strong>Email / Interest</strong></p>
     <table className="ui table">
       <thead>
       <tr>

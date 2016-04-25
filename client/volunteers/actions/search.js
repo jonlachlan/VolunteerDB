@@ -1,14 +1,16 @@
+import { LocalState } from '/client/core/context';
 
-export default {
+export function getResults (str) {
+  LocalState.set("volunteers.search.isLoading", true);
 
-  getResults ({LocalState}, searchText) {
-    Meteor.call('volunteers.profiles.search', searchText, function (err, searchResults) {
-      if (err) {
-        throw err;
-      } else {
-        LocalState.set("volunteers.searchResults", searchResults);
-      }
-    });
-  },
-
+  Meteor.call('volunteers.profiles.search', str, function (err, searchResults) {
+    if (err) {
+      LocalState.set("volunteers.search.isLoading", false);
+      LocalState.set("volunteers.search.isError", true);
+      throw err;
+    } else {
+      LocalState.set("volunteers.search.results", searchResults);
+      LocalState.set("volunteers.search.isLoading", false);
+    }
+  });
 }
