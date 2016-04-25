@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TopbarNav from './topbar_nav';
+import TopbarNav from '../containers/topbar_nav';
 
 
 export default class extends React.Component {
