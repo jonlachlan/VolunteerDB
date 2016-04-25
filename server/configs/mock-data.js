@@ -1,7 +1,7 @@
-import {VolunteerProfiles} from '/lib/collections';
+import {Volunteers} from '/lib/collections';
 
 export default function() {
-  if(VolunteerProfiles.find().fetch().length === 0) {
+  if(Volunteers.find().fetch().length === 0) {
     let mockProfiles = [
       {
         email: "joe@example.com",
@@ -21,7 +21,7 @@ export default function() {
       }
     ];
     mockProfiles.forEach((profile)=> {
-      VolunteerProfiles.insert(profile);
+      Volunteers.insert(profile);
     })
   }
 
