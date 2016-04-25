@@ -26,7 +26,6 @@ standard-minifier-css
 standard-minifier-js
 alanning:elasticsearch
 matb33:collection-hooks
-twbs:bootstrap
 easysearch:elasticsearch
 alanning:roles
 semantic:ui
