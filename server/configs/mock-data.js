@@ -1,6 +1,6 @@
-import {Volunteers} from '/lib/collections';
+import {Volunteers} from '/common/collections';
 
-export default function() {
+Meteor.startup(() => {
   if(Volunteers.find().fetch().length === 0) {
     let mockProfiles = [
       {
@@ -24,5 +24,4 @@ export default function() {
       Volunteers.insert(profile);
     })
   }
-
-}
+});

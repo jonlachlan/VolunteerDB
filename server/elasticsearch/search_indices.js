@@ -1,4 +1,4 @@
-import * as Collections from '/lib/collections'
+import * as Collections from '/common/collections'
 
 /**
  *
@@ -11,17 +11,16 @@ import * as Collections from '/lib/collections'
  * Todo: Update fields for indexing and uncomment
  */
 
-export default function() {
-  const VolunteersIndex = new EasySearch.Index({
-    collection: Collections.Volunteers,
-    // Example only
-    fields: ['interests'],
-    engine: new EasySearch.ElasticSearch({
-      body: (body) => {
-        return body;
-      } // modify the body that's sent when searching
-    })
+export const VolunteersIndex = new EasySearch.Index({
+  collection: Collections.Volunteers,
+  // Example only
+  fields: ['interests'],
+  engine: new EasySearch.ElasticSearch({
+    body: (body) => {
+      return body;
+    } // modify the body that's sent when searching
   })
+});
 
   //VolunteersIndex.config.elasticSearchClient.putMapping({
     // define custom mapping
@@ -38,7 +37,7 @@ export default function() {
   //}
   //
   //});
-}
+
 
 
 // const SkillsIndex = new EasySearch.Index({

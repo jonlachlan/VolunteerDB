@@ -1,5 +1,5 @@
 import {Meteor} from 'meteor/meteor';
-import {VolunteerProfiles} from '/lib/collections'
+import {VolunteerProfiles} from '/common/collections'
 
 export default function () {
 
