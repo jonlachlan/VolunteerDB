@@ -1,5 +1,4 @@
 import React from 'react'
-import ProfileForm from './registration_form'
 
 export default VolunteerSearch = ({
   searchResults,
