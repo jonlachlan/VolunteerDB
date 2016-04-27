@@ -11,6 +11,7 @@ export function getResults (str) {
     } else {
       LocalState.set("volunteers.search.results", searchResults);
       LocalState.set("volunteers.search.isLoading", false);
+      LocalState.set("volunteers.search.isError", false);
     }
   });
 }

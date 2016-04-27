@@ -7,11 +7,13 @@ import { LocalState } from '/client/core/context';
 export default createContainer(() => {
   let searchResults = LocalState.get('volunteers.search.results');
   let isLoading = LocalState.get('volunteers.search.isLoading');
+  let isError = LocalState.get('volunteers.search.isError');
 
   return {
     searchResults,
     resultsCount: searchResults.length,
     isLoading,
+    isError,
     getResults
   };
 }, VolunteerSearch);
