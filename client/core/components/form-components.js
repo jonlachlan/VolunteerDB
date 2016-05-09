@@ -10,12 +10,38 @@ export const Input = React.createClass({
   },
 
   render() {
-    let { type, name, placeholder, className, iconClass } = this.props;
+    let { type, name, label, placeholder, className, iconClass, actionClass, actionText} = this.props;
     return (
       <div className="field">
+        {label ? <label>{label}</label> : null}
         <div className={className}>
           <input onChange={this.changeValue} type={type} name={name} placeholder={placeholder} />
-          <i className={iconClass}></i>
+          {iconClass ? <i className={iconClass}></i> : null }
+          {actionClass || actionText ? <button className={actionClass}>{actionText}</button> : null}
+        </div>
+      </div>
+    )
+  }
+});
+
+
+
+export const TextArea = React.createClass({
+
+  mixins: [Formsy.Mixin],
+
+  changeValue(event) {
+    this.setValue(event.currentTarget.value);
+  },
+
+  render() {
+    let { name, label, placeholder, className, iconClass } = this.props;
+    return (
+      <div className="field">
+        {label ? <label>{label}</label> : null}
+        <div className={className}>
+          <textarea onChange={this.changeValue} name={name} placeholder={placeholder} />
+          {iconClass ? <i className={iconClass}></i> : null}
         </div>
       </div>
     )
@@ -90,7 +116,10 @@ export const Radio = React.createClass({
   },
 
   getInitialState() {
-    return { value: [], cmp: (a, b) => a === b };
+    let { items, initDefault } = this.props;
+    let defaultValue = initDefault ? items[0] : "";
+    console.log(defaultValue)
+    return { value: defaultValue, cmp: (a, b) => a === b };
   },
 
   componentDidMount() {
@@ -104,25 +133,19 @@ export const Radio = React.createClass({
     this.setState({ value });
   },
 
-  renderItems(items) {
-    return items.map((item, i) => (
-      <radioItem item={item} i={i} value={this.state.value} changeValue={this.changeValue} />
-    ))
-  },
-
   render() {
-    let { name, label, items, groupClass, radioClass } = this.props;
+    let { name, label, items, groupClass, itemClass, initDefault } = this.props;
     return (
       <div ref="group" className={groupClass}>
         <label>{label}</label>
         {items.map((item, i) => (
           <div className="field">
-            <div className={radioClass} key={i}>
+            <div className={itemClass} key={i}>
               <input
                 type="radio"
                 name={name}
                 onChange={this.changeValue.bind(this, item)}
-                checked={this.state.value === item}
+                checked={this.state.value === item || (i === 0 && initDefault)}
               />
               <label>{item}</label>
             </div>
@@ -169,19 +192,21 @@ export const Checkboxes = React.createClass({
   },
 
   render() {
-    let { name, label, items, groupClass, checkboxClass } = this.props;
+    let { name, label, items, groupClass, itemClass } = this.props;
     return (
       <div ref="group" className={groupClass}>
         <label>{label}</label>
         {items.map((item, i) => (
-          <div className={checkboxClass} key={i}>
-            <input
-              type="checkbox"
-              name={name}
-              onChange={this.changeValue.bind(this, item)}
-              checked={contains(this.state.value, item, this.state.cmp)}
-            />
-            <label>{item}</label>
+          <div className="field">
+            <div className={itemClass} key={i}>
+              <input
+                type="checkbox"
+                name={name}
+                onChange={this.changeValue.bind(this, item)}
+                checked={contains(this.state.value, item, this.state.cmp)}
+              />
+              <label>{item}</label>
+            </div>
           </div>
         ))
         }
