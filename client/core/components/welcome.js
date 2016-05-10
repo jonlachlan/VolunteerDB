@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlowRouter } from 'meteor/kadira:flow-router'
 
 let headerStyle={
   marginTop: "100px"

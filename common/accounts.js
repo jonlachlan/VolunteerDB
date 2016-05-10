@@ -9,11 +9,12 @@ Accounts.config({
 
 Accounts.ui.config({
   passwordSignupFields: 'EMAIL_ONLY',
-  //loginPath: '/login',
-  //signUpPath: '/signup',
-  //resetPasswordPath: '/reset-password',
-  //profilePath: '/profile',
+  loginPath: '/login',
+  signUpPath: '/volunteers/register',
+  resetPasswordPath: '/reset-password',
+  profilePath: '/volunteers/profile',
   //onSignedInHook: () => FlowRouter.go('/'),
   onSignedOutHook: () => FlowRouter.go('/'),
-  minimumPasswordLength: 6
+  minimumPasswordLength: 6,
+  onPostSignUpHook: () => FlowRouter.go('volunteers.profile')
 });
