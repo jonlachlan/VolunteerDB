@@ -1,16 +1,21 @@
 import React from 'react';
-import { submitRegistration } from '../actions/register';
-import { Input } from '/client/core/components/form-components';
+import { createVolunteerJob } from '../actions/volunteer_jobs';
+import { Input, Checkboxes } from '/client/core/components/form-components';
+import { DIVISIONS, ISSUES, SKILLS } from '../configs/profile_fields';
 
-export default class Onboarding extends React.Component {
+//_id, createdDate, createdBy, title, description, skills
+export default class CreateVolunteerJob extends React.Component {
 
   render() {
-    let { submitRegistration } = this.props;
+    let { divisions } = this.props;
     return (
-      <Formsy.Form onSubmit={(data)=>submitRegistration(data)} className="ui large form" >
-        <Input name="title" placeholder="Title of volunteering job" iconClass="mail outline icon" className="ui left icon input" />
-        <Input name="description" placeholder="Description of volunteering job" iconClass="map icon" className="ui left icon input" />
-        <button className="ui fluid large teal submit button" type="submit">Register</button>
+      <Formsy.Form onSubmit={(data)=>createVolunteerJob(data)} className="ui large form" >
+        <Input name="title" label="Title" placeholder="Title of volunteering job" iconClass="mail outline icon" className="ui left icon input" />
+        <Input name="description" label="Description" placeholder="Description of volunteering job" iconClass="map icon" className="ui left icon input" />
+        <Checkboxes name="divisions" items={DIVISIONS} label="Divisions" groupClass="grouped fields" itemClass="ui checkbox" />
+        <Checkboxes name="skills" items={SKILLS.RESEARCH} label="Research skills" groupClass="grouped fields" itemClass="ui checkbox" />
+
+        <button className="ui fluid large teal submit button" type="submit">Submit</button>
       </Formsy.Form>
     )
   }

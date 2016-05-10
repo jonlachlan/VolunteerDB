@@ -1,24 +1,30 @@
 import { LocalState } from '/client/core/context';
 import { Meteor } from 'meteor/meteor';
-import { FlowRouter } from 'meteor/kadira:flow-router'
+import { check } from 'meteor/check';
+import { authCommon } from '/client/core/context';
 import { VolunteerJobs } from '/common/collections'
 
-export function showInterestInVolunteerJob(volunteerJobId) {
-  //let user = Meteor.user();
-  let user = {
-    email: "dave@grassrootsselect.org"
-  }
-  //let volunteerJob = VolunteerJobs.findOne(volunteerJobId);
-  let volunteerJob = {
-    volunteerJobId,
-    title: "Job title"
-  }
-  console.log(user.email + "showed interest in job" + volunteerJob.title);
-  // todo
+export function addInterestInVolunteerJob(volunteerJobId) {
+  check(volunteerJobId, String);
+
+  Meteor.call('addInterestInVolunteerJob', volunteerJobId)
 }
 
+export function removeInterestInVolunteerJob(volunteerJobId) {
+  check(volunteerJobId, String);
+
+  Meteor.call('removeInterestInVolunteerJob', volunteerJobId)
+}
+
+
+
+
 export function createVolunteerJob(volunteerJob) {
+  console.log(volunteerJob)
   check(volunteerJob, Object);
-  console.log(volunteerJob);
-  //VolunteerJobs.insert(volunteerJob);
+
+  volunteerJob.createdBy = Meteor.userId();
+  volunteerJob.createdDate = new Date();
+  volunteerJob.volunteersInterested = [];
+  VolunteerJobs.insert(volunteerJob);
 }
