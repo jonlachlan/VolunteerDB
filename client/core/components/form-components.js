@@ -5,6 +5,13 @@ export const Input = React.createClass({
 
   mixins: [Formsy.Mixin],
 
+  componentWillMount() {
+    let { initValue } = this.props;
+    if(initValue) {
+      this.setValue(initValue)
+    }
+  },
+
   changeValue(event) {
     this.setValue(event.currentTarget.value);
   },
@@ -66,6 +73,12 @@ export const Checkbox = React.createClass({
     this.setState({ value: value, cmp: this.props.cmp || this.state.cmp });
   },
 
+  componentDidReceiveProps(prevPros) {
+    const { value } = this.props;
+    this.setValue(value);
+    this.setState({ value, cmp: this.props.cmp || this.state.cmp });
+  },
+
   changeValue(value, event) {
     const checked = event.currentTarget.checked;
 
@@ -104,7 +117,7 @@ function contains(container, item, cmp) {
 
 export const Radio = React.createClass({
   /* Based on example here: https://github.com/christianalfoni/formsy-react/blob/master/examples/components/RadioGroup.js
-    Example Usage:
+   Example Usage:
    <Radio name="availability" label="When are you available?" groupClass="inline fields" checkboxClass="ui radio checkbox"
    items={["Weekday Mornings", "Weekday Days", "Weekday Nights", "Weekday Mornings", "Weekend Days", "Weekend Nights"]} />
 
@@ -117,13 +130,18 @@ export const Radio = React.createClass({
 
   getInitialState() {
     let { items, initDefault } = this.props;
-    let defaultValue = initDefault ? items[0] : "";
-    console.log(defaultValue)
+    let defaultValue = initDefault ? items[0].value : "";
     return { value: defaultValue, cmp: (a, b) => a === b };
   },
 
   componentDidMount() {
-    const value = this.props.value;
+    const { value } = this.props;
+    this.setValue(value);
+    this.setState({ value });
+  },
+
+  componentDidReceiveProps(prevPros) {
+    const { value } = this.props;
     this.setValue(value);
     this.setState({ value });
   },
@@ -144,10 +162,10 @@ export const Radio = React.createClass({
               <input
                 type="radio"
                 name={name}
-                onChange={this.changeValue.bind(this, item)}
-                checked={this.state.value === item || (i === 0 && initDefault)}
+                onChange={this.changeValue.bind(this, item.value)}
+                checked={this.state.value === item.value || (i === 0 && initDefault)}
               />
-              <label>{item}</label>
+              <label>{item.label}</label>
             </div>
           </div>
         ))}
@@ -157,10 +175,10 @@ export const Radio = React.createClass({
 })
 
 export const Checkboxes = React.createClass({
-/* Example:
- <Checkbox name="availability" label="When are you available?" groupClass="inline fields" checkboxClass="ui checkbox"
- items={["Weekday Mornings", "Weekday Days", "Weekday Nights", "Weekday Mornings", "Weekend Days", "Weekend Nights"]} />
- */
+  /* Example:
+   <Checkbox name="availability" label="When are you available?" groupClass="inline fields" checkboxClass="ui checkbox"
+   items={["Weekday Mornings", "Weekday Days", "Weekday Nights", "Weekday Mornings", "Weekend Days", "Weekend Nights"]} />
+   */
   mixins: [Formsy.Mixin],
 
   componentDidMount() {
@@ -175,6 +193,12 @@ export const Checkboxes = React.createClass({
     const value = this.props.value || [];
     this.setValue(value);
     this.setState({ value: value, cmp: this.props.cmp || this.state.cmp });
+  },
+
+  componentDidReceiveProps(prevPros) {
+    const { value } = this.props;
+    this.setValue(value);
+    this.setState({ value, cmp: this.props.cmp || this.state.cmp });
   },
 
   changeValue(value, event) {
@@ -202,16 +226,14 @@ export const Checkboxes = React.createClass({
               <input
                 type="checkbox"
                 name={name}
-                onChange={this.changeValue.bind(this, item)}
-                checked={contains(this.state.value, item, this.state.cmp)}
+                onChange={this.changeValue.bind(this, item.value)}
+                checked={contains(this.state.value, item.value, this.state.cmp)}
               />
-              <label>{item}</label>
+              <label>{item.label}</label>
             </div>
           </div>
-        ))
-        }
+        ))}
       </div>
     )
   }
 })
-
