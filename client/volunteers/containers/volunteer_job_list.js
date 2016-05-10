@@ -1,4 +1,6 @@
+import { authCommon } from '/client/core/context';
 import { createContainer } from 'meteor/react-meteor-data';
+import { VolunteerJobs } from '/common/collections';
 import VolunteerJobList from '../components/volunteer_job_list';
 
 const volunteerJobExamples = [
@@ -21,7 +23,23 @@ const volunteerJobExamples = [
 ];
 
 export default createContainer(() => {
+  let subs = [
+    Meteor.subscribe('volunteer_jobs')
+  ];
+  let { userId, isOrganizer, isManager } = authCommon();
+  let volunteerJobs = VolunteerJobs.find().fetch().map((job)=> {
+    let isInterested = job.volunteersInterested.findIndex((vol)=> {return vol === userId}) >= 0;
+    return {
+      ...job,
+      isInterested
+    }
+  });
+
   return {
-    volunteerJobs: volunteerJobExamples,
+    ready: true,
+    userId,
+    volunteerJobs,
+    isOrganizer,
+    isManager
   }
 }, VolunteerJobList)
