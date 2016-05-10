@@ -2,9 +2,10 @@ import React from 'react';
 import {mount} from 'react-mounter';
 import MainLayout from '../core/components/main_layout';
 import Search from './containers/volunteer_search'
-import Onboarding from './components/onboarding'
-import VolunteerJobList from './containers/volunteer_job_list'
-import CreateVolunteerJob from './components/create_volunteer_job';
+import Registration from './components/registration'
+//import VolunteerJobList from './containers/volunteer_job_list'
+import CreateVolunteerJob from './containers/create_volunteer_job';
+import Profile from './containers/profile'
 
 FlowRouter.route('/volunteers/search', {
   name: 'volunteers.search',
@@ -19,19 +20,32 @@ FlowRouter.route('/volunteers/register', {
   name: 'volunteers.register',
   action() {
     mount(MainLayout, {
-      content: () => (<Onboarding />)
+      content: () => (<Registration />)
     });
   }
 });
 
-FlowRouter.route('/volunteers/jobs', {
-  name: 'volunteers.jobs',
+FlowRouter.route('/volunteers/profile', {
+  name: 'volunteers.profile',
   action() {
     mount(MainLayout, {
-      content: () => (<VolunteerJobList />)
+      content: () => (<Profile />)
     });
   }
 });
+
+
+/**
+ * This is not needed, currently root route
+ */
+//FlowRouter.route('/volunteers/jobs', {
+//  name: 'volunteers.jobs',
+//  action() {
+//    mount(MainLayout, {
+//      content: () => (<VolunteerJobList />)
+//    });
+//  }
+//});
 
 FlowRouter.route('/volunteers/create-job', {
   name: 'volunteers.createJob',
