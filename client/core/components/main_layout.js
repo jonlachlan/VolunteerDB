@@ -15,7 +15,7 @@ export default class extends React.Component {
       <div className="ui grid">
         <div className="row" style={topbarRowStyle}>
           <div className="column">
-            <TopbarNav />
+            <TopbarNav />}
           </div>
         </div>
         <div className="row">
